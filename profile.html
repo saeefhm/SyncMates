@@ -2,17 +2,63 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>SyncMates | Profile</title>
-  <link rel="stylesheet" href="styles.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SyncMates – Profile</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
 </head>
 <body>
-  <h1>Create Your Profile</h1>
-  <form id="profile-form">
-    <input type="text" placeholder="Name" required />
-    <input type="number" placeholder="Age" required />
-    <input type="text" placeholder="Interests (comma-separated)" required />
-    <input type="text" placeholder="Location" required />
-    <button type="submit">Save Profile</button>
-  </form>
+  <header>
+    <nav>
+      <div class="logo">SyncMates</div>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="profile.html" class="active">Profile</a></li>
+        <li><a href="filters.html">Filters</a></li>
+        <li><a href="matches.html">Matches</a></li>
+        <li><a href="chat.html">Chat</a></li>
+        <li><a href="sync-circles.html">Sync Circles</a></li>
+        <li><a href="safety.html">Safety</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <div class="hero-content">
+      <h1>Your Profile</h1>
+      <p>Tell us about yourself to help us match you better.</p>
+    </div>
+  </section>
+
+  <main style="max-width: 600px; margin: 2rem auto; padding: 0 1rem;">
+    <form>
+      <label>Name</label>
+      <input type="text" placeholder="Your name" />
+
+      <label>Age</label>
+      <input type="number" placeholder="Your age" />
+
+      <label>Bio</label>
+      <textarea placeholder="Write a short bio..."></textarea>
+
+      <label>Interests</label>
+      <input type="text" placeholder="e.g. gaming, music, coding" />
+
+      <button type="submit">Save Profile</button>
+    </form>
+  </main>
+
+  <footer>
+    <div class="footer-links">
+      <a href="index.html">Home</a>
+      <a href="profile.html">Profile</a>
+      <a href="filters.html">Filters</a>
+      <a href="matches.html">Matches</a>
+      <a href="chat.html">Chat</a>
+      <a href="sync-circles.html">Sync Circles</a>
+      <a href="safety.html">Safety</a>
+    </div>
+    <p>© 2025 SyncMates</p>
+  </footer>
 </body>
 </html>
