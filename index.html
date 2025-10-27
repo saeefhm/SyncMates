@@ -1,182 +1,230 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>SyncMates – Connect. Match. Meet.</title>
-  <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    body { font-family: 'Segoe UI', Arial, sans-serif; color: #222; background: #f0faff; }
-    a { color: inherit; text-decoration: none; }
-    ul { list-style: none; }
+/* Reset and base styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
-    header, .hero {
-      background: linear-gradient(135deg, #bae6fd, #a7f3d0);
-      box-shadow: 0 2px 10px rgba(0,0,0,0.08);
-    }
+body {
+  font-family: 'Poppins', 'Segoe UI', sans-serif;
+  background: linear-gradient(to bottom right, #e0f7fa, #f0faff);
+  color: #1e293b;
+  line-height: 1.6;
+  padding-bottom: 4rem;
+}
 
-    nav {
-      display: flex; align-items: center; justify-content: space-between;
-      max-width: 1200px; margin: 0 auto; padding: 1rem 2rem;
-    }
+a {
+  text-decoration: none;
+  color: inherit;
+}
 
-    .nav-links { display: flex; gap: 2rem; }
-    .nav-links a {
-      color: #fff; font-weight: 600; transition: color 0.2s;
-    }
-    .nav-links a:hover, .nav-links .active {
-      color: #0f766e; border-bottom: 2px solid #0f766e;
-    }
+ul {
+  list-style: none;
+}
 
-    .login-btn {
-      background: #22d3ee; color: #fff; padding: 0.5rem 1.5rem;
-      border-radius: 25px; font-weight: bold; margin-left: 2rem;
-      transition: background 0.2s;
-    }
-    .login-btn:hover { background: #0f766e; }
+/* Navigation */
+header {
+  background: linear-gradient(135deg, #7dd3fc, #99f6e4);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  border-bottom: 1px solid #bae6fd;
+}
 
-    .hero {
-      padding: 120px 0 80px; text-align: center;
-    }
-    .hero h1 { font-size: 3rem; color: #fff; margin-bottom: 1rem; }
-    .hero p { font-size: 1.5rem; color: #0f766e; margin-bottom: 2rem; }
-    .cta-btn {
-      background: #22d3ee; color: #fff; padding: 1rem 2rem;
-      border-radius: 30px; font-size: 1.2rem; font-weight: bold;
-      transition: background 0.2s;
-    }
-    .cta-btn:hover { background: #0f766e; }
+nav {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
 
-    .impact-section {
-      background: #e0f7fa; padding: 80px 0;
-      display: flex; justify-content: center; gap: 2rem; flex-wrap: wrap;
-    }
+.nav-links {
+  display: flex;
+  gap: 1.5rem;
+}
 
-    .impact-bubble {
-      background: #fff; border-radius: 50%; width: 250px; height: 250px;
-      display: flex; flex-direction: column; justify-content: center; align-items: center;
-      box-shadow: 0 5px 20px rgba(0,0,0,0.08); text-align: center;
-      padding: 1rem;
-    }
+.nav-links a {
+  font-weight: 600;
+  color: #0f172a;
+  padding: 0.5rem 0;
+  position: relative;
+}
 
-    .impact-bubble h2 {
-      font-size: 2.2rem; color: #22d3ee; margin-bottom: 0.5rem;
-    }
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0%;
+  height: 2px;
+  background-color: #0f766e;
+  transition: width 0.3s ease;
+}
 
-    .impact-bubble p {
-      font-size: 1rem; color: #0f766e;
-    }
+.nav-links a:hover::after,
+.nav-links .active::after {
+  width: 100%;
+}
 
-    footer {
-      background: linear-gradient(135deg, #22d3ee, #0f766e);
-      color: #fff; padding: 2.5rem 0; margin-top: 4rem;
-    }
+/* Hero Section */
+.hero {
+  text-align: center;
+  padding: 100px 20px 60px;
+  background: linear-gradient(135deg, #bae6fd, #a7f3d0);
+  border-radius: 0 0 40px 40px;
+}
 
-    .footer-links {
-      display: flex; justify-content: center; gap: 2.2rem; margin-bottom: 1rem;
-    }
+.hero h1 {
+  font-size: 3.2rem;
+  color: #0f172a;
+  margin-bottom: 1rem;
+}
 
-    .footer-links a { color: #fff; font-weight: 500; }
-    .footer-links a:hover { color: #bae6fd; }
-    footer p { text-align: center; font-size: 1rem; }
+.hero p {
+  font-size: 1.4rem;
+  color: #0f766e;
+  margin-bottom: 2rem;
+}
 
-    @media (max-width: 900px) {
-      .container { padding: 0 1rem; }
-      .nav-links { gap: 1.2rem; }
-    }
+.cta-btn {
+  background: #22d3ee;
+  color: white;
+  padding: 0.8rem 2rem;
+  font-size: 1.1rem;
+  border-radius: 30px;
+  font-weight: 600;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  transition: background 0.3s ease;
+}
 
-    @media (max-width: 700px) {
-      .footer-links { flex-direction: column; gap: 0.7rem; }
-      header nav { flex-direction: column; gap: 0.7rem; }
-      .impact-section { flex-direction: column; align-items: center; }
-    }
-  </style>
-</head>
-<body>
-  <header>
-    <nav>
-      <ul class="nav-links">
-        <li><a href="index.html" class="active">Home</a></li>
-        <li><a href="profile.html">Create Profile</a></li>
-        <li><a href="filters.html">Set Filters</a></li>
-        <li><a href="matches.html">Get Matched</a></li>
-        <li><a href="chat.html">Chat Safely</a></li>
-        <li><a href="sync-circles.html">Sync Circles</a></li>
-        <li><a href="safety.html">Safety</a></li>
-      </ul>
-    </nav>
-  </header>
+.cta-btn:hover {
+  background: #0f766e;
+}
 
-  <section class="hero">
-    <div class="container">
-      <h1>SyncMates</h1>
-      <p>Connect with people who share your vibe—safely and authentically.</p>
-      <a href="profile.html" class="cta-btn">Get Started</a>
-    </div>
-  </section>
+/* Impact Section */
+.impact-section {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2rem;
+  padding: 80px 20px;
+}
 
-  <section class="impact-section">
-    <div class="impact-bubble">
-      <h2><span class="counter" data-target="5000">0</span></h2>
-      <p>Profiles Created</p>
-    </div>
-    <div class="impact-bubble">
-      <h2><span class="counter" data-target="3200">0</span>+</h2>
-      <p>Successful Matches</p>
-    </div>
-    <div class="impact-bubble">
-      <h2>🛡️</h2>
-      <p>SyncMates is built with safety at its core—ID verification, no screenshots, and community moderation.</p>
-    </div>
-  </section>
+.impact-bubble {
+  background: white;
+  width: 260px;
+  height: 260px;
+  border-radius: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s ease;
+  text-align: center;
+  padding: 1rem;
+}
 
-  <footer>
-    <div class="container">
-      <div class="footer-links">
-        <a href="index.html">Home</a>
-        <a href="profile.html">Profile</a>
-        <a href="filters.html">Filters</a>
-        <a href="matches.html">Matches</a>
-        <a href="chat.html">Chat</a>
-        <a href="sync-circles.html">Sync Circles</a>
-        <a href="safety.html">Safety</a>
-      </div>
-      <p>© 2025 SyncMates</p>
-    </div>
-  </footer>
+.impact-bubble:hover {
+  transform: translateY(-5px);
+}
 
-  <script>
-    const counters = document.querySelectorAll('.counter');
-    const speed = 50;
+.impact-bubble h2 {
+  font-size: 2.4rem;
+  color: #22d3ee;
+  margin-bottom: 0.5rem;
+}
 
-    const animateCounters = () => {
-      counters.forEach(counter => {
-        const updateCount = () => {
-          const target = +counter.getAttribute('data-target');
-          const count = +counter.innerText;
-          const increment = Math.ceil(target / speed);
+.impact-bubble p {
+  font-size: 1rem;
+  color: #0f766e;
+}
 
-          if (count < target) {
-            counter.innerText = count + increment;
-            setTimeout(updateCount, 30);
-          } else {
-            counter.innerText = target;
-          }
-        };
-        updateCount();
-      });
-    };
+/* Forms */
+form {
+  max-width: 600px;
+  margin: 2rem auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 0 1rem;
+}
 
-    const observer = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          animateCounters();
-          observer.disconnect();
-        }
-      });
-    });
+input,
+textarea,
+button {
+  padding: 0.8rem;
+  border: 1px solid #cbd5e1;
+  border-radius: 12px;
+  font-size: 1rem;
+  transition: border-color 0.2s ease;
+}
 
-    counters.forEach(counter => observer.observe(counter));
-  </script>
-</body>
-</html>
+input:focus,
+textarea:focus {
+  border-color: #22d3ee;
+  outline: none;
+}
+
+button {
+  background-color: #22d3ee;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+button:hover {
+  background-color: #0f766e;
+}
+
+/* Footer */
+footer {
+  background: linear-gradient(135deg, #22d3ee, #0f766e);
+  color: white;
+  padding: 2rem 1rem;
+  text-align: center;
+  margin-top: 4rem;
+  border-top-left-radius: 40px;
+  border-top-right-radius: 40px;
+}
+
+.footer-links {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.footer-links a {
+  font-weight: 500;
+  color: white;
+  transition: color 0.2s ease;
+}
+
+.footer-links a:hover {
+  color: #bae6fd;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .hero h1 {
+    font-size: 2.4rem;
+  }
+
+  .impact-section {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  nav {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .footer-links {
+    flex-direction: column;
+    gap: 0.7rem;
+  }
+}
